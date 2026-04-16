@@ -1,8 +1,11 @@
-import mysql from "mysql2/promise";
-import dotenv from "dotenv";
+import mysql from "mysql2";
 
-dotenv.config();
+const db = mysql.createConnection(process.env.MYSQL_URL);
 
-export const db = mysql.createPool({
-  uri: process.env.MYSQL_URL,
+db.connect((err) => {
+  if (err) {
+    console.log("DB ERROR:", err);
+  } else {
+    console.log("DB Connected");
+  }
 });
