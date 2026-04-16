@@ -12,6 +12,10 @@ app.use(express.json());
 
 app.use("/api", schoolRoutes);
 
+app.get("/test", (req, res) => {
+  res.send("working");
+});
+
 const port=process.env.PORT
 
 app.listen(port, () => {
